@@ -120,7 +120,6 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid rgba(255,255,255,0.3);
-      margin-bottom: 4px;
     }
 
     .fights-list {
@@ -164,10 +163,15 @@
     }
 
     .fighter {
-      min-width: 140px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 170px;
+    }
+
+    .fighter-info {
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
 
     .fighter-name {
@@ -187,7 +191,7 @@
       opacity: 0.6;
     }
 
-    /* PRAWA STRONA + RUNDY NA DOLE */
+    /* PRAWA STRONA + RUNDY */
     .fight-meta {
       text-align: right;
       font-size: 0.8rem;
@@ -204,22 +208,16 @@
 
     .fight-extra {
       width: 100%;
-      font-size: 0.75rem;
-      opacity: 0.65;
       margin-top: 4px;
+      font-size: 0.78rem;
+      opacity: 0.7;
       display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 4px;
+      justify-content: flex-end;
     }
 
-    .label {
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      font-size: 0.7rem;
-      opacity: 0.6;
+    .rounds {
+      text-align: right;
     }
-    .rounds { font-size: 0.78rem; }
 
     .footer {
       opacity: 0.6;
@@ -229,6 +227,22 @@
       flex-wrap: wrap;
       gap: 6px;
       font-size: .75rem;
+    }
+
+    @media (max-width: 720px) {
+      .fight-card {
+        align-items: flex-start;
+      }
+      .fight-meta {
+        text-align: left;
+      }
+      .fight-extra {
+        justify-content: flex-start;
+      }
+      .event-meta {
+        align-items: flex-start;
+        text-align: left;
+      }
     }
   </style>
 </head>
@@ -263,16 +277,20 @@
           <div class="fight-main">
             <div class="fighter red">
               <img class="fighter-photo" src="mikolaj.jpg" alt="Mikołaj Szymański">
-              <div class="fighter-name">Mikołaj Szymański</div>
-              <div class="fighter-record">Rekord: 0–0–0</div>
+              <div class="fighter-info">
+                <div class="fighter-name">Mikołaj Szymański</div>
+                <div class="fighter-record">Rekord: 0–0–0</div>
+              </div>
             </div>
 
             <div class="vs">VS</div>
 
             <div class="fighter blue">
               <img class="fighter-photo" src="olgierd.jpg" alt="Olgierd Weroński">
-              <div class="fighter-name">Olgierd Weroński</div>
-              <div class="fighter-record">Rekord: 0–0–0</div>
+              <div class="fighter-info">
+                <div class="fighter-name">Olgierd Weroński</div>
+                <div class="fighter-record">Rekord: 0–0–0</div>
+              </div>
             </div>
           </div>
 
@@ -282,7 +300,6 @@
           </div>
 
           <div class="fight-extra">
-            <span class="label">Rundy:</span>
             <span class="rounds">5 x 5 min</span>
           </div>
         </article>
@@ -292,16 +309,20 @@
           <div class="fight-main">
             <div class="fighter red">
               <img class="fighter-photo" src="oskar.jpg" alt="Oskar Suchocki">
-              <div class="fighter-name">Oskar Suchocki</div>
-              <div class="fighter-record">Rekord: 1–0–0 (1 SUB)</div>
+              <div class="fighter-info">
+                <div class="fighter-name">Oskar Suchocki</div>
+                <div class="fighter-record">Rekord: 1–0–0 (1 SUB)</div>
+              </div>
             </div>
 
             <div class="vs">VS</div>
 
             <div class="fighter blue">
               <img class="fighter-photo" src="lukasz.jpg" alt="Łukasz Niewęgłowski">
-              <div class="fighter-name">Łukasz Niewęgłowski</div>
-              <div class="fighter-record">Rekord: 0–1–0</div>
+              <div class="fighter-info">
+                <div class="fighter-name">Łukasz Niewęgłowski</div>
+                <div class="fighter-record">Rekord: 0–1–0</div>
+              </div>
             </div>
           </div>
 
@@ -311,7 +332,6 @@
           </div>
 
           <div class="fight-extra">
-            <span class="label">Rundy:</span>
             <span class="rounds">5 x 5 min</span>
           </div>
         </article>
@@ -321,16 +341,20 @@
           <div class="fight-main">
             <div class="fighter red">
               <img class="fighter-photo" src="dawid.jpg" alt="Dawid Maruszak">
-              <div class="fighter-name">Dawid Maruszak</div>
-              <div class="fighter-record">Rekord: 0–0–0</div>
+              <div class="fighter-info">
+                <div class="fighter-name">Dawid Maruszak</div>
+                <div class="fighter-record">Rekord: 0–0–0</div>
+              </div>
             </div>
 
             <div class="vs">VS</div>
 
             <div class="fighter blue">
               <img class="fighter-photo" src="alan.jpg" alt="Alan Pietras">
-              <div class="fighter-name">Alan Pietras</div>
-              <div class="fighter-record">Rekord: 0–0–0</div>
+              <div class="fighter-info">
+                <div class="fighter-name">Alan Pietras</div>
+                <div class="fighter-record">Rekord: 0–0–0</div>
+              </div>
             </div>
           </div>
 
@@ -340,7 +364,6 @@
           </div>
 
           <div class="fight-extra">
-            <span class="label">Rundy:</span>
             <span class="rounds">3 x 5 min</span>
           </div>
         </article>
