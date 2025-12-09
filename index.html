@@ -156,6 +156,44 @@
       flex-wrap: wrap;
     }
 
+    /* POZIOMY UKŁAD – 1. i 3. WALKA */
+    .fight-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .fighter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 170px;
+    }
+
+    .fighter-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fighter-name {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+    .fighter.red .fighter-name  { color: #ff5c7a; }
+    .fighter.blue .fighter-name { color: #4dd0ff; }
+
+    .fighter-record { font-size: 0.78rem; opacity: 0.75; }
+
+    .vs {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.6;
+    }
+
+    /* PIONOWY UKŁAD – 2. WALKA */
     .fight-main-vertical {
       display: flex;
       flex-direction: column;
@@ -172,15 +210,8 @@
       min-width: 140px;
     }
 
-    .fighter-name {
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 1rem;
-    }
-    .fighter-name.red  { color: #ff5c7a; }
-    .fighter-name.blue { color: #4dd0ff; }
-
-    .fighter-record { font-size: 0.78rem; opacity: 0.75; }
+    .fighter-block .fighter-name.red  { color: #ff5c7a; font-weight: 700; text-transform: uppercase; }
+    .fighter-block .fighter-name.blue { color: #4dd0ff; font-weight: 700; text-transform: uppercase; }
 
     .vs-center {
       font-size: 0.8rem;
@@ -251,20 +282,26 @@
 
       <div class="fights-list">
 
-        <!-- WALKA 1 – pionowo -->
+        <!-- WALKA 1 – POZIOMO (jak wcześniej) -->
         <article class="fight-card">
           <div class="fight-top">
-            <div class="fight-main-vertical">
-              <div class="fighter-block">
+            <div class="fight-main">
+              <div class="fighter red">
                 <img class="fighter-photo" src="mikolaj.jpg" alt="">
-                <div class="fighter-name red">Mikołaj Szymański</div>
-                <div class="fighter-record">Rekord: 0–0–0</div>
+                <div class="fighter-info">
+                  <div class="fighter-name">Mikołaj Szymański</div>
+                  <div class="fighter-record">Rekord: 0–0–0</div>
+                </div>
               </div>
-              <div class="vs-center">VS</div>
-              <div class="fighter-block">
+
+              <div class="vs">VS</div>
+
+              <div class="fighter blue">
                 <img class="fighter-photo" src="olgierd.jpg" alt="">
-                <div class="fighter-name blue">Olgierd Weroński</div>
-                <div class="fighter-record">Rekord: 0–0–0</div>
+                <div class="fighter-info">
+                  <div class="fighter-name">Olgierd Weroński</div>
+                  <div class="fighter-record">Rekord: 0–0–0</div>
+                </div>
               </div>
             </div>
 
@@ -279,7 +316,7 @@
           </div>
         </article>
 
-        <!-- WALKA 2 – pionowo -->
+        <!-- WALKA 2 – PIONOWO (VS między fotami) -->
         <article class="fight-card">
           <div class="fight-top">
             <div class="fight-main-vertical">
@@ -288,7 +325,9 @@
                 <div class="fighter-name red">Oskar Suchocki</div>
                 <div class="fighter-record">Rekord: 1–0–0 (1 SUB)</div>
               </div>
+
               <div class="vs-center">VS</div>
+
               <div class="fighter-block">
                 <img class="fighter-photo" src="lukasz.jpg" alt="">
                 <div class="fighter-name blue">Łukasz Niewęgłowski</div>
@@ -307,20 +346,26 @@
           </div>
         </article>
 
-        <!-- WALKA 3 – pionowo -->
+        <!-- WALKA 3 – POZIOMO (jak wcześniej) -->
         <article class="fight-card">
           <div class="fight-top">
-            <div class="fight-main-vertical">
-              <div class="fighter-block">
+            <div class="fight-main">
+              <div class="fighter red">
                 <img class="fighter-photo" src="dawid.jpg" alt="">
-                <div class="fighter-name red">Dawid Maruszak</div>
-                <div class="fighter-record">Rekord: 0–0–0</div>
+                <div class="fighter-info">
+                  <div class="fighter-name">Dawid Maruszak</div>
+                  <div class="fighter-record">Rekord: 0–0–0</div>
+                </div>
               </div>
-              <div class="vs-center">VS</div>
-              <div class="fighter-block">
+
+              <div class="vs">VS</div>
+
+              <div class="fighter blue">
                 <img class="fighter-photo" src="alan.jpg" alt="">
-                <div class="fighter-name blue">Alan Pietras</div>
-                <div class="fighter-record">Rekord: 0–0–0</div>
+                <div class="fighter-info">
+                  <div class="fighter-name">Alan Pietras</div>
+                  <div class="fighter-record">Rekord: 0–0–0</div>
+                </div>
               </div>
             </div>
 
