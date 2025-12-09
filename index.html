@@ -138,7 +138,6 @@
       flex-wrap: wrap;
     }
 
-    /* POZIOMY UKŁAD -– 1. i 3. WALKA */
     .fight-main {
       display: flex;
       align-items: center;
@@ -173,33 +172,6 @@
       text-transform: uppercase;
       letter-spacing: 0.2em;
       opacity: 0.6;
-    }
-
-    /* PIONOWY UKŁAD – 2. WALKA */
-    .fight-main-vertical {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .fighter-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 4px;
-      min-width: 140px;
-    }
-
-    .fighter-block .fighter-name.red  { color: #ff5c7a; font-weight: 700; text-transform: uppercase; }
-    .fighter-block .fighter-name.blue { color: #4dd0ff; font-weight: 700; text-transform: uppercase; }
-
-    .vs-center {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      opacity: 0.7;
     }
 
     .fight-meta {
@@ -253,13 +225,13 @@
         </div>
         <div class="event-meta">
           <span>Start gali: 20:00</span>
-          <span>bliczek do mikpolka</span>
+          <span>Transmisja: PPV do mikpolka</span>
         </div>
       </header>
 
       <div class="fights-list">
 
-        <!-- WALKA 1 – POZIOMO (jak wcześniej) -->
+        <!-- WALKA 1 -->
         <article class="fight-card">
           <div class="fight-top">
             <div class="fight-main">
@@ -293,22 +265,26 @@
           </div>
         </article>
 
-        <!-- WALKA 2 – PIONOWO (VS między fotami) -->
+        <!-- WALKA 2 – TERAZ TEŻ POZIOMO -->
         <article class="fight-card">
           <div class="fight-top">
-            <div class="fight-main-vertical">
-              <div class="fighter-block">
+            <div class="fight-main">
+              <div class="fighter red">
                 <img class="fighter-photo" src="oskar.jpg" alt="">
-                <div class="fighter-name red">Oskar Suchocki</div>
-                <div class="fighter-record">Rekord: 1–0–0 (1 SUB)</div>
+                <div class="fighter-info">
+                  <div class="fighter-name">Oskar Suchocki</div>
+                  <div class="fighter-record">Rekord: 1–0–0 (1 SUB)</div>
+                </div>
               </div>
 
-              <div class="vs-center">VS</div>
+              <div class="vs">VS</div>
 
-              <div class="fighter-block">
+              <div class="fighter blue">
                 <img class="fighter-photo" src="lukasz.jpg" alt="">
-                <div class="fighter-name blue">Łukasz Niewęgłowski</div>
-                <div class="fighter-record">Rekord: 0–1–0</div>
+                <div class="fighter-info">
+                  <div class="fighter-name">Łukasz Niewęgłowski</div>
+                  <div class="fighter-record">Rekord: 0–1–0</div>
+                </div>
               </div>
             </div>
 
@@ -323,7 +299,7 @@
           </div>
         </article>
 
-        <!-- WALKA 3 – POZIOMO (jak wcześniej) -->
+        <!-- WALKA 3 -->
         <article class="fight-card">
           <div class="fight-top">
             <div class="fight-main">
@@ -367,4 +343,3 @@
   </main>
 </body>
 </html>
-
