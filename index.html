@@ -11,15 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ======= RESET ======= */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Poppins", sans-serif;
       color: #f5f5f5;
       min-height: 100vh;
       display: flex;
@@ -35,7 +30,6 @@
       inset: 0;
       background: radial-gradient(circle at 0% 0%, rgba(255, 0, 122, 0.25), transparent 55%),
                   radial-gradient(circle at 100% 100%, rgba(0, 180, 255, 0.25), transparent 55%);
-      mix-blend-mode: screen;
       opacity: 0.7;
       z-index: -1;
       animation: move-glow 18s ease-in-out infinite alternate;
@@ -46,7 +40,6 @@
       100% { transform: translate3d(5%, -3%, 0) scale(1.1); }
     }
 
-    /* GŁÓWNY KONTENER – FULL HEIGHT */
     .app {
       width: 100%;
       max-width: 1100px;
@@ -61,15 +54,13 @@
       background: rgba(10, 10, 25, 0.9);
       border-radius: 20px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
       padding: 24px;
       backdrop-filter: blur(16px);
-      animation: fade-in 0.8s ease-out forwards;
-
       width: 100%;
       min-height: 85vh;
       display: flex;
       flex-direction: column;
+      animation: fade-in 0.8s ease-out forwards;
     }
 
     @keyframes fade-in {
@@ -77,151 +68,92 @@
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* NAGŁÓWEK */
     .header {
       display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       margin-bottom: 24px;
     }
 
-    .event-main { display: flex; flex-direction: column; gap: 4px; }
-
     .event-title {
-      font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.13em;
     }
 
     .event-subtitle { opacity: 0.8; }
 
     .event-meta {
+      text-align: right;
       display: flex;
       flex-direction: column;
       gap: 6px;
-      text-align: right;
-      font-size: 0.9rem;
-      align-items: flex-end;
     }
 
-    /* PRZYCISK INSTAGRAM */
-    .stream-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .stream-label { opacity: 0.8; }
-
+    /* INSTAGRAM BUTTON */
+    .stream-row { display: flex; gap: 8px; align-items: center; }
     .btn-instagram {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       padding: 6px 14px;
       border-radius: 999px;
-      color: #fff;
+      background: linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+      color: white;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.82rem;
-      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-      box-shadow: 0 0 14px rgba(214, 41, 118, 0.7);
-      transition: 0.15s;
+      box-shadow: 0 0 12px rgba(214,41,118,0.6);
     }
 
-    .btn-instagram:hover {
-      transform: translateY(-1px) scale(1.03);
-      box-shadow: 0 0 18px rgba(214, 41, 118, 1);
+    /* ZDJĘCIA ZAWODNIKÓW */
+    .fighter-photo {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.3);
+      margin-bottom: 4px;
     }
 
-    /* LISTA WALK */
     .fights-list {
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin-top: 8px;
       flex-grow: 1;
     }
 
     .fight-card {
-      position: relative;
+      background: rgba(255,255,255,0.04);
       border-radius: 18px;
-      background: radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(255,255,255,0.05), transparent 55%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.1);
       padding: 14px 16px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 10px;
-      cursor: pointer;
+      animation: fight-in .4s forwards;
       opacity: 0;
-      animation: fight-in 0.4s forwards;
     }
-
-    .fight-card:nth-child(1) { animation-delay: 0.08s; }
-    .fight-card:nth-child(2) { animation-delay: 0.16s; }
-    .fight-card:nth-child(3) { animation-delay: 0.24s; }
 
     @keyframes fight-in {
-      0% { opacity: 0; transform: translateY(14px) scale(0.98); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    .fight-card:hover {
-      transform: scale(1.01);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.7);
+      0% { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .fight-main {
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .fighter { min-width: 140px; }
+    .fighter { display: flex; flex-direction: column; align-items: center; }
 
-    .fighter-name {
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-    }
-
+    .fighter-name { font-weight: 700; text-transform: uppercase; font-size: 1rem; }
     .fighter.red .fighter-name { color: #ff5c7a; }
     .fighter.blue .fighter-name { color: #4dd0ff; }
 
-    .fighter-record { font-size: 0.78rem; opacity: 0.75; }
-
-    .vs { opacity: 0.6; letter-spacing: 0.2em; }
-
-    .fight-meta { text-align: right; font-size: 0.8rem; }
-
-    .weight-class { opacity: 0.75; }
-    .fight-type { opacity: 0.6; font-size: 0.78rem; }
-
-    .fight-extra {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      opacity: 0.65;
-      font-size: 0.75rem;
-      margin-top: 4px;
-    }
-
-    /* STOPKA */
     .footer {
-      margin-top: 22px;
       opacity: 0.6;
-      font-size: 0.75rem;
+      margin-top: 22px;
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 6px;
     }
   </style>
 </head>
@@ -229,9 +161,10 @@
 <body>
   <main class="app">
     <section class="card">
+
       <!-- NAGŁÓWEK -->
       <header class="header">
-        <div class="event-main">
+        <div>
           <div class="event-title">Święta Suchego</div>
           <div class="event-subtitle">Suchy's Arena • 20 grudnia 2025</div>
         </div>
@@ -239,12 +172,8 @@
         <div class="event-meta">
           <span>Start gali: 20:00</span>
           <div class="stream-row">
-            <span class="stream-label">Transmisja:</span>
-            <a 
-              class="btn-instagram" 
-              href="https://instagram.com/mikpolekk" 
-              target="_blank"
-            >
+            <span>Transmisja:</span>
+            <a class="btn-instagram" href="https://instagram.com/mikpolekk" target="_blank">
               Instagram @mikpolekk
             </a>
           </div>
@@ -254,23 +183,29 @@
       <!-- LISTA WALK -->
       <div class="fights-list">
 
-        <!-- WALKA 1 -->
+        <!-- WALKA 1 – ZDJĘCIA DODANE -->
         <article class="fight-card">
           <div class="fight-main">
+
             <div class="fighter red">
+              <img class="fighter-photo" src="mikolaj.jpg" alt="Mikołaj Szymański">
               <div class="fighter-name">Mikołaj Szymański</div>
               <div class="fighter-record">Rekord: 0–0–0</div>
             </div>
+
             <div class="vs">VS</div>
+
             <div class="fighter blue">
+              <img class="fighter-photo" src="olgierd.jpg" alt="Olgierd Weroński">
               <div class="fighter-name">Olgierd Weroński</div>
               <div class="fighter-record">Rekord: 0–0–0</div>
             </div>
+
           </div>
 
           <div class="fight-meta">
-            <div class="weight-class">Waga półśrednia • 77 kg</div>
-            <div class="fight-type">Main event • MMA</div>
+            <div>Waga półśrednia • 77 kg</div>
+            <div>Main event • MMA</div>
           </div>
 
           <div class="fight-extra">
@@ -278,7 +213,7 @@
           </div>
         </article>
 
-        <!-- WALKA 2 -->
+        <!-- WALKA 2 (bez zdjęć) -->
         <article class="fight-card">
           <div class="fight-main">
             <div class="fighter red">
@@ -293,8 +228,8 @@
           </div>
 
           <div class="fight-meta">
-            <div class="weight-class">Waga półśrednia • 77 kg</div>
-            <div class="fight-type">Co-main • MMA</div>
+            <div>Waga półśrednia • 77 kg</div>
+            <div>Co-main • MMA</div>
           </div>
 
           <div class="fight-extra">
@@ -302,7 +237,7 @@
           </div>
         </article>
 
-        <!-- WALKA 3 -->
+        <!-- WALKA 3 (bez zdjęć) -->
         <article class="fight-card">
           <div class="fight-main">
             <div class="fighter red">
@@ -317,8 +252,8 @@
           </div>
 
           <div class="fight-meta">
-            <div class="weight-class">Waga półśrednia • 77 kg</div>
-            <div class="fight-type">Undercard • MMA</div>
+            <div>Waga półśrednia • 77 kg</div>
+            <div>Undercard • MMA</div>
           </div>
 
           <div class="fight-extra">
@@ -328,7 +263,6 @@
 
       </div>
 
-      <!-- STOPKA -->
       <footer class="footer">
         <span>© 2025 Święta Suchego</span>
         <span>Organizator: UFC</span>
