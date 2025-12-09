@@ -67,17 +67,20 @@
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+    /* NAGŁÓWEK */
     .header {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       margin-bottom: 24px;
+      gap: 12px;
     }
 
     .event-title {
       font-size: clamp(1.7rem, 3vw, 2.3rem);
       font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: .13em;
     }
 
     .event-subtitle { opacity: 0.8; }
@@ -87,10 +90,12 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
+      font-size: .9rem;
+      align-items: flex-end;
     }
 
     /* INSTAGRAM BUTTON */
-    .stream-row { display: flex; gap: 8px; align-items: center; }
+    .stream-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .btn-instagram {
       padding: 6px 14px;
       border-radius: 999px;
@@ -98,10 +103,17 @@
       color: white;
       text-decoration: none;
       font-weight: 600;
+      font-size: .82rem;
       box-shadow: 0 0 12px rgba(214,41,118,0.6);
+      white-space: nowrap;
+      transition: 0.15s;
+    }
+    .btn-instagram:hover {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 0 16px rgba(214,41,118,1);
     }
 
-    /* ZDJĘCIA */
+    /* ZDJĘCIA + FIGHT CARD */
     .fighter-photo {
       width: 55px;
       height: 55px;
@@ -119,21 +131,29 @@
     }
 
     .fight-card {
-      background: rgba(255,255,255,0.04);
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(255,255,255,0.05), transparent 55%);
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.1);
       padding: 14px 16px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      align-items: center;
       gap: 10px;
       animation: fight-in .4s forwards;
       opacity: 0;
+      cursor: pointer;
     }
 
     @keyframes fight-in {
-      0% { opacity: 0; transform: translateY(14px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(14px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .fight-card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.7);
     }
 
     .fight-main {
@@ -143,19 +163,72 @@
       flex-wrap: wrap;
     }
 
-    .fighter { display: flex; flex-direction: column; align-items: center; }
+    .fighter {
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-    .fighter-name { font-weight: 700; text-transform: uppercase; font-size: 1rem; }
-    .fighter.red .fighter-name { color: #ff5c7a; }
+    .fighter-name {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+    .fighter.red .fighter-name  { color: #ff5c7a; }
     .fighter.blue .fighter-name { color: #4dd0ff; }
 
     .fighter-record { font-size: 0.78rem; opacity: 0.75; }
+
+    .vs {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.6;
+    }
+
+    /* PRAWA STRONA + RUNDY NA DOLE */
+    .fight-meta {
+      text-align: right;
+      font-size: 0.8rem;
+    }
+    .fight-meta .weight-class {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.75;
+    }
+    .fight-meta .fight-type {
+      font-size: 0.78rem;
+      opacity: 0.6;
+    }
+
+    .fight-extra {
+      width: 100%;
+      font-size: 0.75rem;
+      opacity: 0.65;
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .label {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.7rem;
+      opacity: 0.6;
+    }
+    .rounds { font-size: 0.78rem; }
 
     .footer {
       opacity: 0.6;
       margin-top: 22px;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: .75rem;
     }
   </style>
 </head>
@@ -188,9 +261,8 @@
         <!-- WALKA 1 -->
         <article class="fight-card">
           <div class="fight-main">
-
             <div class="fighter red">
-              <img class="fighter-photo" src="mikolaj.jpg" alt="">
+              <img class="fighter-photo" src="mikolaj.jpg" alt="Mikołaj Szymański">
               <div class="fighter-name">Mikołaj Szymański</div>
               <div class="fighter-record">Rekord: 0–0–0</div>
             </div>
@@ -198,29 +270,28 @@
             <div class="vs">VS</div>
 
             <div class="fighter blue">
-              <img class="fighter-photo" src="olgierd.jpg" alt="">
+              <img class="fighter-photo" src="olgierd.jpg" alt="Olgierd Weroński">
               <div class="fighter-name">Olgierd Weroński</div>
               <div class="fighter-record">Rekord: 0–0–0</div>
             </div>
-
           </div>
 
           <div class="fight-meta">
-            <div>Waga półśrednia • 77 kg</div>
-            <div>Main event • MMA</div>
+            <div class="weight-class">Waga półśrednia • 77 kg</div>
+            <div class="fight-type">Main event • MMA</div>
           </div>
 
           <div class="fight-extra">
-            <span>Rundy:</span><span>5 x 5 min</span>
+            <span class="label">Rundy:</span>
+            <span class="rounds">5 x 5 min</span>
           </div>
         </article>
 
         <!-- WALKA 2 -->
         <article class="fight-card">
           <div class="fight-main">
-
             <div class="fighter red">
-              <img class="fighter-photo" src="oskar.jpg" alt="">
+              <img class="fighter-photo" src="oskar.jpg" alt="Oskar Suchocki">
               <div class="fighter-name">Oskar Suchocki</div>
               <div class="fighter-record">Rekord: 1–0–0 (1 SUB)</div>
             </div>
@@ -228,29 +299,28 @@
             <div class="vs">VS</div>
 
             <div class="fighter blue">
-              <img class="fighter-photo" src="lukasz.jpg" alt="">
+              <img class="fighter-photo" src="lukasz.jpg" alt="Łukasz Niewęgłowski">
               <div class="fighter-name">Łukasz Niewęgłowski</div>
               <div class="fighter-record">Rekord: 0–1–0</div>
             </div>
-
           </div>
 
           <div class="fight-meta">
-            <div>Waga półśrednia • 77 kg</div>
-            <div>Co-main • MMA</div>
+            <div class="weight-class">Waga półśrednia • 77 kg</div>
+            <div class="fight-type">Co-main • MMA</div>
           </div>
 
           <div class="fight-extra">
-            <span>Rundy:</span><span>5 x 5 min</span>
+            <span class="label">Rundy:</span>
+            <span class="rounds">5 x 5 min</span>
           </div>
         </article>
 
         <!-- WALKA 3 -->
         <article class="fight-card">
           <div class="fight-main">
-
             <div class="fighter red">
-              <img class="fighter-photo" src="dawid.jpg" alt="">
+              <img class="fighter-photo" src="dawid.jpg" alt="Dawid Maruszak">
               <div class="fighter-name">Dawid Maruszak</div>
               <div class="fighter-record">Rekord: 0–0–0</div>
             </div>
@@ -258,20 +328,20 @@
             <div class="vs">VS</div>
 
             <div class="fighter blue">
-              <img class="fighter-photo" src="alan.jpg" alt="">
+              <img class="fighter-photo" src="alan.jpg" alt="Alan Pietras">
               <div class="fighter-name">Alan Pietras</div>
               <div class="fighter-record">Rekord: 0–0–0</div>
             </div>
-
           </div>
 
           <div class="fight-meta">
-            <div>Waga półśrednia • 77 kg</div>
-            <div>Undercard • MMA</div>
+            <div class="weight-class">Waga półśrednia • 77 kg</div>
+            <div class="fight-type">Undercard • MMA</div>
           </div>
 
           <div class="fight-extra">
-            <span>Rundy:</span><span>3 x 5 min</span>
+            <span class="label">Rundy:</span>
+            <span class="rounds">3 x 5 min</span>
           </div>
         </article>
 
