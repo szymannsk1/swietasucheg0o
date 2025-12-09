@@ -5,7 +5,6 @@
   <title>Święta Suchego – Karta Walk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Czcionka -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -23,7 +22,6 @@
       overflow-x: hidden;
     }
 
-    /* ANIMOWANE TŁO */
     body::before {
       content: "";
       position: fixed;
@@ -67,7 +65,6 @@
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* NAGŁÓWEK */
     .header {
       display: flex;
       justify-content: space-between;
@@ -94,7 +91,6 @@
       align-items: flex-end;
     }
 
-    /* INSTAGRAM BUTTON */
     .stream-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .btn-instagram {
       padding: 6px 14px;
@@ -113,7 +109,6 @@
       box-shadow: 0 0 16px rgba(214,41,118,1);
     }
 
-    /* ZDJĘCIA + FIGHT CARD */
     .fighter-photo {
       width: 55px;
       height: 55px;
@@ -136,9 +131,7 @@
       border: 1px solid rgba(255,255,255,0.1);
       padding: 14px 16px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
       gap: 10px;
       animation: fight-in .4s forwards;
       opacity: 0;
@@ -155,6 +148,15 @@
       box-shadow: 0 14px 28px rgba(0,0,0,0.7);
     }
 
+    .fight-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* POZIOMY UKŁAD – 1. i 3. WALKA */
     .fight-main {
       display: flex;
       align-items: center;
@@ -191,7 +193,33 @@
       opacity: 0.6;
     }
 
-    /* PRAWA STRONA + RUNDY */
+    /* PIONOWY UKŁAD – 2. WALKA */
+    .fight-main-vertical {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .fighter-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+      min-width: 140px;
+    }
+
+    .fighter-block .fighter-name.red  { color: #ff5c7a; font-weight: 700; text-transform: uppercase; }
+    .fighter-block .fighter-name.blue { color: #4dd0ff; font-weight: 700; text-transform: uppercase; }
+
+    .vs-center {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.7;
+    }
+
     .fight-meta {
       text-align: right;
       font-size: 0.8rem;
@@ -208,15 +236,10 @@
 
     .fight-extra {
       width: 100%;
-      margin-top: 4px;
-      font-size: 0.78rem;
-      opacity: 0.7;
       display: flex;
       justify-content: flex-end;
-    }
-
-    .rounds {
-      text-align: right;
+      font-size: 0.78rem;
+      opacity: 0.7;
     }
 
     .footer {
@@ -230,19 +253,10 @@
     }
 
     @media (max-width: 720px) {
-      .fight-card {
-        align-items: flex-start;
-      }
-      .fight-meta {
-        text-align: left;
-      }
-      .fight-extra {
-        justify-content: flex-start;
-      }
-      .event-meta {
-        align-items: flex-start;
-        text-align: left;
-      }
+      .fight-top { align-items: flex-start; }
+      .fight-meta { text-align: left; }
+      .fight-extra { justify-content: flex-start; }
+      .event-meta { align-items: flex-start; text-align: left; }
     }
   </style>
 </head>
@@ -250,14 +264,11 @@
 <body>
   <main class="app">
     <section class="card">
-
-      <!-- NAGŁÓWEK -->
       <header class="header">
         <div>
           <div class="event-title">Święta Suchego</div>
           <div class="event-subtitle">Suchy's Arena • 20 grudnia 2025</div>
         </div>
-
         <div class="event-meta">
           <span>Start gali: 20:00</span>
           <div class="stream-row">
@@ -269,102 +280,103 @@
         </div>
       </header>
 
-      <!-- LISTA WALK -->
       <div class="fights-list">
 
-        <!-- WALKA 1 -->
+        <!-- WALKA 1 – POZIOMO (jak wcześniej) -->
         <article class="fight-card">
-          <div class="fight-main">
-            <div class="fighter red">
-              <img class="fighter-photo" src="mikolaj.jpg" alt="Mikołaj Szymański">
-              <div class="fighter-info">
-                <div class="fighter-name">Mikołaj Szymański</div>
-                <div class="fighter-record">Rekord: 0–0–0</div>
+          <div class="fight-top">
+            <div class="fight-main">
+              <div class="fighter red">
+                <img class="fighter-photo" src="mikolaj.jpg" alt="">
+                <div class="fighter-info">
+                  <div class="fighter-name">Mikołaj Szymański</div>
+                  <div class="fighter-record">Rekord: 0–0–0</div>
+                </div>
+              </div>
+
+              <div class="vs">VS</div>
+
+              <div class="fighter blue">
+                <img class="fighter-photo" src="olgierd.jpg" alt="">
+                <div class="fighter-info">
+                  <div class="fighter-name">Olgierd Weroński</div>
+                  <div class="fighter-record">Rekord: 0–0–0</div>
+                </div>
               </div>
             </div>
 
-            <div class="vs">VS</div>
-
-            <div class="fighter blue">
-              <img class="fighter-photo" src="olgierd.jpg" alt="Olgierd Weroński">
-              <div class="fighter-info">
-                <div class="fighter-name">Olgierd Weroński</div>
-                <div class="fighter-record">Rekord: 0–0–0</div>
-              </div>
+            <div class="fight-meta">
+              <div class="weight-class">Waga półśrednia • 77 kg</div>
+              <div class="fight-type">Main event • MMA</div>
             </div>
-          </div>
-
-          <div class="fight-meta">
-            <div class="weight-class">Waga półśrednia • 77 kg</div>
-            <div class="fight-type">Main event • MMA</div>
           </div>
 
           <div class="fight-extra">
-            <span class="rounds">5 x 5 min</span>
+            <span>5 x 5 min</span>
           </div>
         </article>
 
-        <!-- WALKA 2 -->
+        <!-- WALKA 2 – PIONOWO (VS między fotami) -->
         <article class="fight-card">
-          <div class="fight-main">
-            <div class="fighter red">
-              <img class="fighter-photo" src="oskar.jpg" alt="Oskar Suchocki">
-              <div class="fighter-info">
-                <div class="fighter-name">Oskar Suchocki</div>
+          <div class="fight-top">
+            <div class="fight-main-vertical">
+              <div class="fighter-block">
+                <img class="fighter-photo" src="oskar.jpg" alt="">
+                <div class="fighter-name red">Oskar Suchocki</div>
                 <div class="fighter-record">Rekord: 1–0–0 (1 SUB)</div>
               </div>
-            </div>
 
-            <div class="vs">VS</div>
+              <div class="vs-center">VS</div>
 
-            <div class="fighter blue">
-              <img class="fighter-photo" src="lukasz.jpg" alt="Łukasz Niewęgłowski">
-              <div class="fighter-info">
-                <div class="fighter-name">Łukasz Niewęgłowski</div>
+              <div class="fighter-block">
+                <img class="fighter-photo" src="lukasz.jpg" alt="">
+                <div class="fighter-name blue">Łukasz Niewęgłowski</div>
                 <div class="fighter-record">Rekord: 0–1–0</div>
               </div>
             </div>
-          </div>
 
-          <div class="fight-meta">
-            <div class="weight-class">Waga półśrednia • 77 kg</div>
-            <div class="fight-type">Co-main • MMA</div>
+            <div class="fight-meta">
+              <div class="weight-class">Waga półśrednia • 77 kg</div>
+              <div class="fight-type">Co-main • MMA</div>
+            </div>
           </div>
 
           <div class="fight-extra">
-            <span class="rounds">5 x 5 min</span>
+            <span>5 x 5 min</span>
           </div>
         </article>
 
-        <!-- WALKA 3 -->
+        <!-- WALKA 3 – POZIOMO (jak wcześniej) -->
         <article class="fight-card">
-          <div class="fight-main">
-            <div class="fighter red">
-              <img class="fighter-photo" src="dawid.jpg" alt="Dawid Maruszak">
-              <div class="fighter-info">
-                <div class="fighter-name">Dawid Maruszak</div>
-                <div class="fighter-record">Rekord: 0–0–0</div>
+          <div class="fight-top">
+            <div class="fight-main">
+              <div class="fighter red">
+                <img class="fighter-photo" src="dawid.jpg" alt="">
+                <div class="fighter-info">
+                  <div class="fighter-name">Dawid Maruszak</div>
+                  <div class="fighter-record">Rekord: 0–0–0</div>
+                </div>
+              </div>
+
+              <div class="vs">VS</div>
+
+              <div class="fighter blue">
+                <img class="fighter-photo" src="alan.jpg" alt="">
+                <div class="fighter-info">
+                  <div class="fighter-name">Alan Pietras</div>
+                  <div class="fighter-record">Rekord: 0–0–0</div>
+                </div>
               </div>
             </div>
 
-            <div class="vs">VS</div>
-
-            <div class="fighter blue">
-              <img class="fighter-photo" src="alan.jpg" alt="Alan Pietras">
-              <div class="fighter-info">
-                <div class="fighter-name">Alan Pietras</div>
-                <div class="fighter-record">Rekord: 0–0–0</div>
-              </div>
+            <div class="fight-meta">
+              <div class="weight-class">Waga półśrednia • 77 kg</div>
+              <div class="fight-type">Undercard • MMA</div>
             </div>
-          </div>
-
-          <div class="fight-meta">
-            <div class="weight-class">Waga półśrednia • 77 kg</div>
-            <div class="fight-type">Undercard • MMA</div>
           </div>
 
           <div class="fight-extra">
-            <span class="rounds">3 x 5 min</span>
+            <span>3 x 5 min</span>
           </div>
         </article>
 
@@ -374,7 +386,6 @@
         <span>© 2025 Święta Suchego</span>
         <span>Organizator: UFC</span>
       </footer>
-
     </section>
   </main>
 </body>
