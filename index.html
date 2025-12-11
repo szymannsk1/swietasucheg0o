@@ -65,12 +65,18 @@
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+    /* HEADER WYŚRODKOWANY */
     .header {
       display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      justify-content: center;
       margin-bottom: 24px;
-      gap: 12px;
+    }
+
+    .header-main {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .event-title {
@@ -80,15 +86,14 @@
       letter-spacing: .13em;
     }
 
-    .event-subtitle { opacity: 0.8; }
+    .event-subtitle {
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
 
-    .event-meta {
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: .9rem;
-      align-items: flex-end;
+    .event-extra {
+      opacity: 0.8;
+      font-size: 0.9rem;
     }
 
     .fighter-photo {
@@ -125,6 +130,11 @@
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+    .fight-card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.7);
+    }
+
     .fight-top {
       display: flex;
       justify-content: space-between;
@@ -157,8 +167,7 @@
       text-transform: uppercase;
       font-size: 1rem;
     }
-
-    .fighter.red .fighter-name { color: #ff5c7a; }
+    .fighter.red .fighter-name  { color: #ff5c7a; }
     .fighter.blue .fighter-name { color: #4dd0ff; }
 
     .fighter-record { font-size: 0.78rem; opacity: 0.75; }
@@ -206,7 +215,7 @@
       .fight-top { align-items: flex-start; }
       .fight-meta { text-align: left; }
       .fight-extra { justify-content: flex-start; }
-      .event-meta { align-items: flex-start; text-align: left; }
+      .footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -215,12 +224,10 @@
   <main class="app">
     <section class="card">
       <header class="header">
-        <div>
+        <div class="header-main">
           <div class="event-title">Święta Suchego</div>
           <div class="event-subtitle">Suchy's Arena • 20 grudnia 2025</div>
-        </div>
-        <div class="event-meta">
-          <span>Start gali: 18:00</span>
+          <div class="event-extra">Start gali: 18:00</div>
         </div>
       </header>
 
